@@ -290,3 +290,13 @@ th {
     margin-bottom: 12px;
     display: block;
 }
+
+.status-pending {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.status-cancelled {
+    color: #ff5c5c;
+    font-weight: bold;
+}

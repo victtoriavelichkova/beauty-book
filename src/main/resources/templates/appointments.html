@@ -10,13 +10,17 @@
 
     <header class="header">
         <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
+
         <nav class="nav">
             <a href="/" class="btn btn-outline">Home</a>
-            <a href="/appointments/create" class="btn btn-purple">Book Appointment</a>
+            <a href="/appointments/create" class="btn btn-purple">
+                Book Appointment
+            </a>
         </nav>
     </header>
 
     <main class="content-box">
+
         <h1>Appointments</h1>
 
         <table>
@@ -32,21 +36,43 @@
             </thead>
 
             <tbody>
+
             <tr th:each="appointment : ${appointments}">
-                <td th:text="${appointment.appointmentDateTime}">Date</td>
-                <td th:text="${appointment.client.firstName + ' ' + appointment.client.lastName}">Client</td>
-                <td th:text="${appointment.hairdresser.firstName + ' ' + appointment.hairdresser.lastName}">Hairdresser</td>
-                <td th:text="${appointment.service.name}">Service</td>
-                <td th:text="${appointment.status}">PENDING</td>
+
+                <td th:text="${appointment.appointmentDateTime}">
+                    Date
+                </td>
+
+                <td th:text="${appointment.client.firstName + ' ' + appointment.client.lastName}">
+                    Client
+                </td>
+
+                <td th:text="${appointment.hairdresser.firstName + ' ' + appointment.hairdresser.lastName}">
+                    Hairdresser
+                </td>
+
+                <td th:text="${appointment.service.name}">
+                    Service
+                </td>
+
+                <td>
+                    <span th:text="${appointment.status}"
+                          th:class="${appointment.status.name() == 'PENDING'} ? 'status-pending' : 'status-cancelled'">
+                    </span>
+                </td>
+
                 <td>
                     <a class="action-link"
                        th:href="@{/appointments/cancel/{id}(id=${appointment.id})}">
                         Cancel
                     </a>
                 </td>
+
             </tr>
+
             </tbody>
         </table>
+
     </main>
 
 </div>
