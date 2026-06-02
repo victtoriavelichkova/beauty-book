@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Hairdresser - Beauty Salon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="page">
+
+    <header class="header">
+        <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
+
+        <nav class="nav">
+            <a href="/hairdressers" class="btn btn-outline">
+                Back to Hairdressers
+            </a>
+        </nav>
+    </header>
+
+    <main class="form-wrapper">
+
+        <form class="form-card"
+              th:action="@{/hairdressers/create}"
+              th:object="${hairdresserBindingModel}"
+              method="post">
+
+            <h2>Add Hairdresser</h2>
+            <p>Create a stylist profile</p>
+
+            <label>First Name</label>
+            <input type="text"
+                   th:field="*{firstName}"
+                   placeholder="Enter first name">
+
+            <p class="error-message"
+               th:if="${#fields.hasErrors('firstName')}"
+               th:errors="*{firstName}">
+            </p>
+
+            <label>Last Name</label>
+            <input type="text"
+                   th:field="*{lastName}"
+                   placeholder="Enter last name">
+
+            <p class="error-message"
+               th:if="${#fields.hasErrors('lastName')}"
+               th:errors="*{lastName}">
+            </p>
+
+            <label>Specialization</label>
+            <input type="text"
+                   th:field="*{specialization}"
+                   placeholder="Coloring, haircut, styling...">
+
+            <p class="error-message"
+               th:if="${#fields.hasErrors('firstName')}"
+               th:errors="*{firstName}">
+            </p>
+
+
+            <label class="checkbox-line">
+                <input type="checkbox" th:field="*{active}">
+                Active Hairdresser
+            </label>
+
+            <button type="submit">
+                Save Hairdresser
+            </button>
+
+            <div class="form-link">
+                <a href="/hairdressers">Cancel</a>
+            </div>
+
+        </form>
+
+    </main>
+
+</div>
+
+</body>
+</html>

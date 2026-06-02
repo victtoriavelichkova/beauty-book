@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment - Beauty Salon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="page">
+
+    <header class="header">
+        <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
+
+        <nav class="nav">
+            <a href="/appointments" class="btn btn-outline">
+                Back to Appointments
+            </a>
+        </nav>
+    </header>
+
+    <main class="form-wrapper">
+
+        <form class="form-card"
+              th:action="@{/appointments/create}"
+              th:object="${appointment}"
+              method="post">
+
+            <h2>Book Appointment</h2>
+            <p>Choose client, stylist and service</p>
+
+            <label>Date and Time</label>
+            <input type="datetime-local"
+                   th:field="*{appointmentDateTime}">
+
+            <p class="error-message"
+               th:if="${#fields.hasErrors('appointmentDateTime')}"
+               th:errors="*{appointmentDateTime}">
+            </p>
+
+            <label>Client</label>
+            <select th:field="*{clientId}">
+                <option value="">Select client</option>
+
+                <option th:each="client : ${clients}"
+                        th:value="${client.id}"
+                        th:text="${client.firstName + ' ' + client.lastName}">
+                </option>
+            </select>
+
+            <p class="error-message"
+               th:if="${#fields.hasErrors('clientId')}"
+               th:errors="*{clientId}">
+            </p>
+
+            <label>Hairdresser</label>
+            <select th:field="*{hairdresserId}">
+                <option value="">Select hairdresser</option>
+
+                <option th:each="hairdresser : ${hairdressers}"
+                        th:value="${hairdresser.id}"
+                        th:text="${hairdresser.firstName + ' ' + hairdresser.lastName}">
+                </option>
+            </select>
+
+            <p class="error-message"
+               th:if="${#fields.hasErrors('hairdresserId')}"
+               th:errors="*{hairdresserId}">
+            </p>
+
+            <label>Service</label>
+            <select th:field="*{serviceId}">
+                <option value="">Select service</option>
+
+                <option th:each="service : ${services}"
+                        th:value="${service.id}"
+                        th:text="${service.name}">
+                </option>
+            </select>
+
+            <p class="error-message"
+               th:if="${#fields.hasErrors('serviceId')}"
+               th:errors="*{serviceId}">
+            </p>
+
+            <button type="submit">
+                Book Appointment
+            </button>
+
+            <div class="form-link">
+                <a href="/appointments">Cancel</a>
+            </div>
+
+        </form>
+
+    </main>
+
+</div>
+
+</body>
+</html>

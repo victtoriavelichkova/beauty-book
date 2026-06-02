@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Services - Beauty Salon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="page">
+
+    <header class="header">
+        <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
+
+        <nav class="nav">
+            <a href="/" class="btn btn-outline">Home</a>
+            <a href="/services/create" class="btn btn-purple">
+                Add Service
+            </a>
+        </nav>
+    </header>
+
+    <main class="content-box">
+
+        <h1>Salon Services</h1>
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>Service</th>
+                <th>Duration</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="service : ${services}">
+
+                <td th:text="${service.name}">
+                    Haircut
+                </td>
+
+                <td th:text="${service.durationMinutes + ' min'}">
+                    60 min
+                </td>
+
+                <td th:text="${service.price + ' BGN'}">
+                    50 BGN
+                </td>
+
+                <td>
+
+                    <a class="action-link"
+                       th:href="@{/services/edit/{id}(id=${service.id})}">
+                        Edit
+                    </a>
+
+                    &nbsp;|&nbsp;
+
+                    <a class="action-link"
+                       th:href="@{/services/delete/{id}(id=${service.id})}">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </main>
+
+</div>
+
+</body>
+</html>

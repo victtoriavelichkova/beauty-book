@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Beauty Salon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="page">
+
+    <header class="header">
+        <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
+
+        <nav class="nav">
+            <a href="/profile" class="btn btn-outline">Profile</a>
+            <a href="/appointments" class="btn btn-outline">Appointments</a>
+
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button class="btn btn-purple" type="submit">Logout</button>
+            </form>
+        </nav>
+    </header>
+
+    <main class="hero">
+
+        <div class="hero-small">
+            WELCOME BACK
+        </div>
+
+        <h1>Hello, <span th:text="${username}">User</span></h1>
+
+        <p>
+            Manage appointments, clients and salon services from one place.
+        </p>
+
+        <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:40px;">
+
+            <div class="glass-card">
+                <h3>Clients</h3>
+                <h2 th:text="${clientsCount}">0</h2>
+            </div>
+
+            <div class="glass-card">
+                <h3>Hairdressers</h3>
+                <h2 th:text="${hairdressersCount}">0</h2>
+            </div>
+
+            <div class="glass-card">
+                <h3>Services</h3>
+                <h2 th:text="${servicesCount}">0</h2>
+            </div>
+
+            <div class="glass-card">
+                <h3>Appointments</h3>
+                <h2 th:text="${appointmentsCount}">0</h2>
+            </div>
+
+        </div>
+
+        <div style="margin-top:40px;">
+            <a href="/appointments/create" class="btn btn-purple">
+                Book Appointment
+            </a>
+
+            <a href="/appointments" class="btn btn-outline">
+                View Appointments
+            </a>
+        </div>
+
+    </main>
+
+</div>
+
+<div style="margin-top:30px; color:white;">
+
+    <h1 th:text="${clientsCount}"></h1>
+
+    <h1 th:text="${hairdressersCount}"></h1>
+
+    <h1 th:text="${servicesCount}"></h1>
+
+    <h1 th:text="${appointmentsCount}"></h1>
+
+</div>
+
+</body>
+</html>

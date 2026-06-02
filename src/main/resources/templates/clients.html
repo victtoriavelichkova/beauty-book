@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients - Beauty Salon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="page">
+
+    <header class="header">
+        <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
+
+        <nav class="nav">
+            <a href="/" class="btn btn-outline">Home</a>
+            <a href="/clients/create" class="btn btn-purple">Add Client</a>
+        </nav>
+    </header>
+
+    <main class="content-box">
+
+        <h1>Clients</h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="client : ${clients}">
+
+                <td th:text="${client.firstName + ' ' + client.lastName}">
+                    Client Name
+                </td>
+
+                <td th:text="${client.phone}">
+                    Phone
+                </td>
+
+                <td>
+
+                    <a class="action-link"
+                       th:href="@{/clients/edit/{id}(id=${client.id})}">
+                        Edit
+                    </a>
+
+                    &nbsp;|&nbsp;
+
+                    <a class="action-link"
+                       th:href="@{/clients/delete/{id}(id=${client.id})}">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+            </tbody>
+
+        </table>
+
+    </main>
+
+</div>
+
+</body>
+</html>

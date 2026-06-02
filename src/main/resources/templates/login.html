@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Beauty Salon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="page">
+
+    <header class="header">
+        <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
+        <nav class="nav">
+            <a href="/" class="btn btn-outline">Back to Home</a>
+        </nav>
+    </header>
+
+    <main class="form-wrapper">
+        <form class="form-card" th:action="@{/login}" method="post">
+
+            <h2>Welcome Back</h2>
+            <p>Login to your account</p>
+
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Enter username" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter password" required>
+
+            <input type="hidden"
+                   th:name="${_csrf.parameterName}"
+                   th:value="${_csrf.token}" />
+
+            <button type="submit">Login</button>
+
+            <div class="form-link">
+                Don't have an account? <a href="/register">Register</a>
+            </div>
+        </form>
+    </main>
+
+    <div class="footer">© 2026 Beauty Salon. All rights reserved.</div>
+
+</div>
+</body>
+</html>

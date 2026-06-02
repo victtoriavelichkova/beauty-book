@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hairdressers - Beauty Salon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="page">
+
+    <header class="header">
+        <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
+
+        <nav class="nav">
+            <a href="/" class="btn btn-outline">Home</a>
+            <a href="/hairdressers/create" class="btn btn-purple">
+                Add Hairdresser
+            </a>
+        </nav>
+    </header>
+
+    <main class="content-box">
+
+        <h1>Hairdressers</h1>
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Specialization</th>
+                <th>Active</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="hairdresser : ${hairdressers}">
+
+                <td th:text="${hairdresser.firstName + ' ' + hairdresser.lastName}">
+                    Hairdresser Name
+                </td>
+
+                <td th:text="${hairdresser.specialization}">
+                    Specialization
+                </td>
+
+                <td th:text="${hairdresser.active ? 'Yes' : 'No'}">
+                    Active
+                </td>
+
+                <td>
+
+                    <a class="action-link"
+                       th:href="@{/hairdressers/edit/{id}(id=${hairdresser.id})}">
+                        Edit
+                    </a>
+
+                    &nbsp;|&nbsp;
+
+                    <a class="action-link"
+                       th:href="@{/hairdressers/delete/{id}(id=${hairdresser.id})}">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </main>
+
+</div>
+
+</body>
+</html>

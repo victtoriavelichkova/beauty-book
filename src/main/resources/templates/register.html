@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - Beauty Salon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="page">
+
+    <header class="header">
+        <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
+        <nav class="nav">
+            <a href="/" class="btn btn-outline">Back to Home</a>
+        </nav>
+    </header>
+
+    <main class="form-wrapper">
+        <form class="form-card" action="/register" method="post">
+            <h2>Create Account</h2>
+            <p>Fill in the details to get started</p>
+
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Enter username" required>
+
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter email" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create password" required>
+
+            <button type="submit">Register</button>
+
+            <div class="form-link">
+                Already have an account? <a href="/login">Login</a>
+            </div>
+        </form>
+    </main>
+
+    <div class="footer">© 2026 Beauty Salon. All rights reserved.</div>
+
+</div>
+</body>
+</html>

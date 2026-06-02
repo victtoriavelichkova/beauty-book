@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Service - Beauty Salon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="page">
+
+    <header class="header">
+        <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
+
+        <nav class="nav">
+            <a href="/services" class="btn btn-outline">
+                Back to Services
+            </a>
+        </nav>
+    </header>
+
+    <main class="form-wrapper">
+
+        <form class="form-card"
+              th:action="@{/services/edit/{id}(id=${serviceId})}"
+              th:object="${serviceBindingModel}"
+              method="post">
+
+            <h2>Edit Service</h2>
+            <p>Update service information</p>
+
+            <label>Service Name</label>
+            <input type="text"
+                   th:field="*{name}"
+                   placeholder="Haircut, coloring, styling...">
+
+            <p class="error-message"
+               th:if="${#fields.hasErrors('name')}"
+               th:errors="*{name}">
+            </p>
+
+            <label>Duration Minutes</label>
+            <input type="number"
+                   th:field="*{durationMinutes}"
+                   placeholder="Example: 60">
+
+            <p class="error-message"
+               th:if="${#fields.hasErrors('durationMinutes')}"
+               th:errors="*{durationMinutes}">
+            </p>
+
+            <label>Price</label>
+            <input type="number"
+                   step="0.01"
+                   th:field="*{price}"
+                   placeholder="Example: 45.00">
+
+            <p class="error-message"
+               th:if="${#fields.hasErrors('price')}"
+               th:errors="*{price}">
+            </p>
+
+            <button type="submit">
+                Update Service
+            </button>
+
+            <div class="form-link">
+                <a href="/services">Cancel</a>
+            </div>
+
+        </form>
+
+    </main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointments - Beauty Salon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="page">
+
+    <header class="header">
+        <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
+        <nav class="nav">
+            <a href="/" class="btn btn-outline">Home</a>
+            <a href="/appointments/create" class="btn btn-purple">Book Appointment</a>
+        </nav>
+    </header>
+
+    <main class="content-box">
+        <h1>Appointments</h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Date & Time</th>
+                <th>Client</th>
+                <th>Hairdresser</th>
+                <th>Service</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="appointment : ${appointments}">
+                <td th:text="${appointment.appointmentDateTime}">Date</td>
+                <td th:text="${appointment.client.firstName + ' ' + appointment.client.lastName}">Client</td>
+                <td th:text="${appointment.hairdresser.firstName + ' ' + appointment.hairdresser.lastName}">Hairdresser</td>
+                <td th:text="${appointment.service.name}">Service</td>
+                <td th:text="${appointment.status}">PENDING</td>
+                <td>
+                    <a class="action-link"
+                       th:href="@{/appointments/cancel/{id}(id=${appointment.id})}">
+                        Cancel
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+
+</div>
+</body>
+</html>
