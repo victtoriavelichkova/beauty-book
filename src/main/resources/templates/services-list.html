@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Services - Beauty Salon</title>
+    <title>Services | Beauty Salon</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -14,32 +14,29 @@
 
         <nav class="nav">
             <a href="/dashboard" class="btn btn-outline">Dashboard</a>
-            <a href="/" class="btn btn-outline">Home</a>
-            <a href="/services/create" class="btn btn-purple">
-                Add Service
-            </a>
+            <a href="/services/pricelist" class="btn btn-outline">Price List</a>
+            <a href="/appointments/create" class="btn btn-purple">Book Appointment</a>
         </nav>
     </header>
 
     <main class="content-box">
 
-        <h1>Salon Services</h1>
+        <h1>Available Services</h1>
+
+        <p style="margin-bottom:30px;">
+            Browse all services offered by our salon.
+        </p>
 
         <table>
-
             <thead>
             <tr>
                 <th>Service</th>
                 <th>Duration</th>
-                <th>Price</th>
-                <th>Action</th>
             </tr>
             </thead>
 
             <tbody>
-
             <tr th:each="service : ${services}">
-
                 <td th:text="${service.name}">
                     Haircut
                 </td>
@@ -47,31 +44,8 @@
                 <td th:text="${service.durationMinutes + ' min'}">
                     60 min
                 </td>
-
-                <td th:text="${service.price + ' EUR'}">
-                    50 €
-                </td>
-
-                <td>
-
-                    <a class="action-link"
-                       th:href="@{/services/edit/{id}(id=${service.id})}">
-                        Edit
-                    </a>
-
-                    &nbsp;|&nbsp;
-
-                    <a class="action-link"
-                       th:href="@{/services/delete/{id}(id=${service.id})}">
-                        Delete
-                    </a>
-
-                </td>
-
             </tr>
-
             </tbody>
-
         </table>
 
     </main>

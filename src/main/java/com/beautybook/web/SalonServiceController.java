@@ -113,4 +113,12 @@ public class SalonServiceController {
         return "pricelist";
     }
 
+    @GetMapping("/list")
+    public String servicesList(Model model) {
+
+        model.addAttribute("services", salonServiceService.getAll());
+
+        return "services-list";
+    }
+
 }

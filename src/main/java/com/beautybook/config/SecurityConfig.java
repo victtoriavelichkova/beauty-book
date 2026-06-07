@@ -38,25 +38,24 @@ public class SecurityConfig {
                                 "/images/**"
                         ).permitAll()
 
-                        // Price list за всички логнати потребители
-                        .requestMatchers("/services/pricelist")
-                        .authenticated()
+                        // USER + ADMIN
+                        .requestMatchers(
+                                "/services/pricelist",
+                                "/services/list",
+                                "/appointments/**",
+                                "/dashboard",
+                                "/profile"
+                        ).authenticated()
 
                         // Само ADMIN
                         .requestMatchers(
                                 "/clients/**",
                                 "/hairdressers/**",
+                                "/services",
                                 "/services/create",
                                 "/services/edit/**",
                                 "/services/delete/**"
                         ).hasRole("ADMIN")
-
-                        // Всички логнати потребители
-                        .requestMatchers(
-                                "/appointments/**",
-                                "/dashboard",
-                                "/profile"
-                        ).authenticated()
 
                         .anyRequest().authenticated()
                 )
