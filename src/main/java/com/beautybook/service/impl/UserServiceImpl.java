@@ -12,9 +12,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
+
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+
+
 
     public UserServiceImpl(UserRepository userRepository,
                            RoleRepository roleRepository,
@@ -27,6 +30,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(String username, String email, String password) {
 
+        System.out.println("REGISTER STARTED");
+
         User user = new User();
         user.setUsername(username);
         user.setEmail(email);
@@ -35,8 +40,12 @@ public class UserServiceImpl implements UserService {
         Role role = roleRepository.findByRole(UserRole.USER)
                 .orElseThrow();
 
+        System.out.println("ROLE FOUND: " + role.getRole());
+
         user.setRole(role);
 
         userRepository.save(user);
+
+        System.out.println("USER SAVED SUCCESSFULLY");
     }
 }

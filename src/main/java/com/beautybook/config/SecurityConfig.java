@@ -26,19 +26,24 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
+                .csrf(csrf -> csrf.disable())
+
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/login", "/register", "/css/**", "/images/**").permitAll()
                         .requestMatchers("/clients/**", "/hairdressers/**", "/services/**").hasRole("ADMIN")
                         .requestMatchers("/appointments/**", "/dashboard", "/profile").authenticated()
                         .anyRequest().authenticated()
                 )
+
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/dashboard", true)
                         .permitAll()
                 )
+
                 .logout(logout -> logout
                         .logoutSuccessUrl("/")
+                        .permitAll()
                 );
 
         return http.build();
