@@ -104,4 +104,13 @@ public class SalonServiceController {
         salonServiceService.delete(id);
         return "redirect:/services";
     }
+
+    @GetMapping("/pricelist")
+    public String pricelist(Model model) {
+
+        model.addAttribute("services", salonServiceService.getAll());
+
+        return "pricelist";
+    }
+
 }

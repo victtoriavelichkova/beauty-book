@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Price List - Beauty Salon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="page">
+
+    <header class="header">
+        <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
+
+        <nav class="nav">
+            <a href="/dashboard" class="btn btn-outline">Dashboard</a>
+            <a href="/" class="btn btn-outline">Home</a>
+            <a href="/appointments/create" class="btn btn-purple">Book Appointment</a>
+        </nav>
+    </header>
+
+    <main class="content-box">
+
+        <h1>Price List</h1>
+        <p>Browse all available salon services and prices.</p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Service</th>
+                <th>Duration</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="service : ${services}">
+                <td th:text="${service.name}">Haircut</td>
+                <td th:text="${service.durationMinutes + ' min'}">60 min</td>
+                <td th:text="${service.price + ' €'}">40 €</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </main>
+
+</div>
+
+</body>
+</html>

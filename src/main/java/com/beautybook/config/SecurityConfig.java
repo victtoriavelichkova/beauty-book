@@ -29,9 +29,35 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/register", "/css/**", "/images/**").permitAll()
-                        .requestMatchers("/clients/**", "/hairdressers/**", "/services/**").hasRole("ADMIN")
-                        .requestMatchers("/appointments/**", "/dashboard", "/profile").authenticated()
+
+                        .requestMatchers(
+                                "/",
+                                "/login",
+                                "/register",
+                                "/css/**",
+                                "/images/**"
+                        ).permitAll()
+
+                        // Price list за всички логнати потребители
+                        .requestMatchers("/services/pricelist")
+                        .authenticated()
+
+                        // Само ADMIN
+                        .requestMatchers(
+                                "/clients/**",
+                                "/hairdressers/**",
+                                "/services/create",
+                                "/services/edit/**",
+                                "/services/delete/**"
+                        ).hasRole("ADMIN")
+
+                        // Всички логнати потребители
+                        .requestMatchers(
+                                "/appointments/**",
+                                "/dashboard",
+                                "/profile"
+                        ).authenticated()
+
                         .anyRequest().authenticated()
                 )
 

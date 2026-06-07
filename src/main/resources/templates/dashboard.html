@@ -15,6 +15,7 @@
         <nav class="nav">
             <a href="/profile" class="btn btn-outline">Profile</a>
             <a href="/appointments" class="btn btn-outline">Appointments</a>
+            <a href="/services/pricelist" class="btn btn-outline">Price List</a>
 
             <form th:action="@{/logout}" method="post" style="display:inline;">
                 <button class="btn btn-purple" type="submit">Logout</button>
@@ -31,10 +32,10 @@
         <h1>Hello, <span th:text="${username}">User</span></h1>
 
         <p>
-            Manage appointments, clients and salon services from one place.
+            Manage appointments and explore salon services from one place.
         </p>
 
-        <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:40px;">
+        <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:40px; justify-content:center;">
 
             <div class="glass-card">
                 <h3>Clients</h3>
@@ -58,7 +59,8 @@
 
         </div>
 
-        <div style="margin-top:40px;">
+        <div style="margin-top:40px; display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
+
             <a href="/appointments/create" class="btn btn-purple">
                 Book Appointment
             </a>
@@ -66,21 +68,14 @@
             <a href="/appointments" class="btn btn-outline">
                 View Appointments
             </a>
+
+            <a href="/services/pricelist" class="btn btn-outline">
+                View Price List
+            </a>
+
         </div>
 
     </main>
-
-</div>
-
-<div style="margin-top:30px; color:white;">
-
-    <h1 th:text="${clientsCount}"></h1>
-
-    <h1 th:text="${hairdressersCount}"></h1>
-
-    <h1 th:text="${servicesCount}"></h1>
-
-    <h1 th:text="${appointmentsCount}"></h1>
 
 </div>
 
