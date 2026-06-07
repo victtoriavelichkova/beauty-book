@@ -14,7 +14,7 @@
 
         <nav class="nav">
             <a href="/dashboard" class="btn btn-outline">Dashboard</a>
-            <a href="/" class="btn btn-outline">Home</a>
+            <a href="/services/list" class="btn btn-outline">Services</a>
             <a href="/appointments/create" class="btn btn-purple">Book Appointment</a>
         </nav>
     </header>
@@ -28,7 +28,6 @@
             <thead>
             <tr>
                 <th>Service</th>
-                <th>Duration</th>
                 <th>Price</th>
             </tr>
             </thead>
@@ -36,7 +35,6 @@
             <tbody>
             <tr th:each="service : ${services}">
                 <td th:text="${service.name}">Haircut</td>
-                <td th:text="${service.durationMinutes + ' min'}">60 min</td>
                 <td th:text="${service.price + ' €'}">40 €</td>
             </tr>
             </tbody>

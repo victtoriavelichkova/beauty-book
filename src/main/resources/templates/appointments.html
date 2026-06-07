@@ -40,8 +40,7 @@
 
             <tr th:each="appointment : ${appointments}">
 
-                <td th:text="${appointment.appointmentDateTime}">
-                    Date
+                <td th:text="${#temporals.format(appointment.appointmentDateTime, 'dd.MM.yyyy HH:mm')}">
                 </td>
 
                 <td th:text="${appointment.client.firstName + ' ' + appointment.client.lastName}">
