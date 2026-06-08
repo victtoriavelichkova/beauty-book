@@ -1,6 +1,7 @@
 package com.beautybook.model.binding;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class ClientBindingModel {
@@ -15,6 +16,10 @@ public class ClientBindingModel {
 
     @NotBlank(message = "Phone is required")
     @Size(min = 6, max = 20, message = "Phone must be between 6 and 20 characters")
+    @Pattern(
+            regexp = "^[+]?[0-9]+$",
+            message = "Phone can contain only digits and optional +"
+    )
     private String phone;
 
     public String getFirstName() {
