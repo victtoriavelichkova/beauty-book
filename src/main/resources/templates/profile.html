@@ -14,11 +14,15 @@
 
         <nav class="nav">
             <a href="/dashboard" class="btn btn-outline">Dashboard</a>
-            <a href="/dashboard" class="btn btn-outline">Dashboard</a>
-            <a href="/appointments/create" class="btn btn-purple">Book Appointment</a>
+
+            <a href="/appointments/create" class="btn btn-purple">
+                Book Appointment
+            </a>
 
             <form th:action="@{/logout}" method="post" style="display:inline;">
-                <button class="btn btn-outline" type="submit">Logout</button>
+                <button class="btn btn-outline" type="submit">
+                    Logout
+                </button>
             </form>
         </nav>
     </header>
@@ -26,8 +30,9 @@
     <main class="form-wrapper">
 
         <section class="form-card">
+
             <h2>My Profile</h2>
-            <p>Your account information</p>
+            <p>Manage your BeautyBook account</p>
 
             <label>Username</label>
             <input type="text" th:value="${username}" readonly>
@@ -35,9 +40,32 @@
             <label>Role</label>
             <input type="text" value="Logged User" readonly>
 
-            <div class="form-link">
+            <label>Account Status</label>
+            <input type="text" value="Active" readonly>
+
+            <label>Last Visit</label>
+            <input type="text" th:value="${lastVisit}" readonly>
+
+            <div style="margin-top:20px; text-align:center; color:#d6b3ff;">
+                Welcome to BeautyBook!
+            </div>
+
+            <div style="margin-top:25px; text-align:center; color:#cccccc;">
+                From your account you can:
+                <br><br>
+                ✓ Browse salon services
+                <br>
+                ✓ View the price list
+                <br>
+                ✓ Book appointments
+                <br>
+                ✓ Manage your salon experience
+            </div>
+
+            <div class="form-link" style="margin-top:25px;">
                 <a href="/dashboard">Back to Dashboard</a>
             </div>
+
         </section>
 
     </main>
