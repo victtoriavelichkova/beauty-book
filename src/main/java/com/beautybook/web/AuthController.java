@@ -1,10 +1,14 @@
 package com.beautybook.web;
 
+import com.beautybook.model.binding.RegisterBindingModel;
 import com.beautybook.service.interfaces.UserService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AuthController {
@@ -13,6 +17,11 @@ public class AuthController {
 
     public AuthController(UserService userService) {
         this.userService = userService;
+    }
+
+    @ModelAttribute("registerBindingModel")
+    public RegisterBindingModel initRegisterModel() {
+        return new RegisterBindingModel();
     }
 
     @GetMapping("/login")
@@ -27,11 +36,28 @@ public class AuthController {
 
     @PostMapping("/register")
     public String registerUser(
-            @RequestParam String username,
-            @RequestParam String email,
-            @RequestParam String password) {
+            @Valid @ModelAttribute("registerBindingModel") RegisterBindingModel registerBindingModel,
+            BindingResult bindingResult,
+            Model model) {
 
-        userService.register(username, email, password);
+        if (bindingResult.hasErrors()) {
+            return "register";
+        }
+
+        try {
+
+            userService.register(
+                    registerBindingModel.getUsername(),
+                    registerBindingModel.getEmail(),
+                    registerBindingModel.getPassword()
+            );
+
+        } catch (IllegalArgumentException ex) {
+
+            model.addAttribute("registrationError", ex.getMessage());
+
+            return "register";
+        }
 
         return "redirect:/login";
     }

@@ -30,7 +30,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(String username, String email, String password) {
 
-        System.out.println("REGISTER STARTED");
+        if (userRepository.findByUsername(username).isPresent()) {
+            throw new IllegalArgumentException("Username already exists");
+        }
+
+        if (userRepository.findByEmail(email).isPresent()) {
+            throw new IllegalArgumentException("Email already exists");
+        }
 
         User user = new User();
         user.setUsername(username);
@@ -40,12 +46,8 @@ public class UserServiceImpl implements UserService {
         Role role = roleRepository.findByRole(UserRole.USER)
                 .orElseThrow();
 
-        System.out.println("ROLE FOUND: " + role.getRole());
-
         user.setRole(role);
 
         userRepository.save(user);
-
-        System.out.println("USER SAVED SUCCESSFULLY");
     }
 }
