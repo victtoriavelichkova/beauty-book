@@ -32,13 +32,13 @@ public class SecurityConfig {
 
                         .requestMatchers(
                                 "/",
+                                "/gallery",
                                 "/login",
                                 "/register",
                                 "/css/**",
                                 "/images/**"
                         ).permitAll()
 
-                        // USER + ADMIN
                         .requestMatchers(
                                 "/services/pricelist",
                                 "/services/list",
@@ -47,7 +47,6 @@ public class SecurityConfig {
                                 "/profile"
                         ).authenticated()
 
-                        // Само ADMIN
                         .requestMatchers(
                                 "/clients/**",
                                 "/hairdressers/**",
