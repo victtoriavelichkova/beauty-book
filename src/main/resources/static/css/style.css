@@ -283,6 +283,39 @@ th {
     line-height: 1.6;
 }
 
+.header {
+    margin: 25px 30px;
+    padding: 18px 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(184, 92, 255, 0.25);
+    border-radius: 22px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.logo {
+    font-size: 22px;
+    font-family: 'Playfair Display', serif;
+    text-decoration: none;
+    color: white;
+}
+
+.logo span {
+    color: #b85cff;
+}
+
 .checkbox-line {
     display: flex;
     align-items: center;
