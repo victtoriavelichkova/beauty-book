@@ -61,11 +61,28 @@ public class DashboardController {
             Authentication authentication,
             @org.springframework.web.bind.annotation.CookieValue(
                     value = "lastVisit",
-                    defaultValue = "No previous visit")
+                    defaultValue = "")
             String lastVisit) {
 
         model.addAttribute("username", authentication.getName());
-        model.addAttribute("lastVisit", lastVisit);
+
+        String formattedLastVisit = "No previous visit";
+
+        if (!lastVisit.isBlank()) {
+            try {
+                LocalDateTime dateTime = LocalDateTime.parse(lastVisit);
+
+                formattedLastVisit = dateTime.format(
+                        java.time.format.DateTimeFormatter.ofPattern(
+                                "dd MMM yyyy, HH:mm",
+                                java.util.Locale.ENGLISH
+                        )
+                );
+            } catch (Exception ignored) {
+            }
+        }
+
+        model.addAttribute("lastVisit", formattedLastVisit);
 
         return "profile";
     }
