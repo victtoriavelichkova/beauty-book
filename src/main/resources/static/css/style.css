@@ -15,12 +15,13 @@ body {
 
 .page {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background-image:
             linear-gradient(90deg, rgba(2,4,7,.95), rgba(2,4,7,.70), rgba(2,4,7,.15)),
             url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1600&q=80');
     background-size: cover;
     background-position: center;
-    position: relative;
 }
 
 .header {
@@ -74,7 +75,11 @@ body {
 }
 
 .hero {
-    padding: 120px 0 0 120px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 0 0 120px;
     max-width: 650px;
 }
 
@@ -213,12 +218,69 @@ th {
 }
 
 .footer {
-    position: absolute;
-    bottom: 18px;
     width: 100%;
+    margin-top: auto;
+    padding: 10px 20px;
     text-align: center;
-    color: #ccc;
-    font-size: 13px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #d8d8df;
+}
+
+.footer h3 {
+    color: #c77dff;
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+
+.footer p {
+    margin: 2px 0;
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+.footer-links {
+    margin: 18px 0;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #c77dff;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    font-size: 15px;
+}
+
+.footer-icons span:hover {
+    color: #c77dff;
+}
+
+.footer h3 {
+    font-family: 'Playfair Display', serif;
+    color: #c77dff;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.footer p {
+    color: #d8d8df;
+    margin: 6px 0;
+    line-height: 1.6;
 }
 
 .checkbox-line {
