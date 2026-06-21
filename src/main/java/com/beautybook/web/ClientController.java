@@ -53,7 +53,7 @@ public class ClientController {
 
         clientService.createClient(client);
 
-        return "redirect:/clients";
+        return "redirect:/appointments/create";
     }
 
     @GetMapping("/edit/{id}")

@@ -432,3 +432,8 @@ th {
     padding: 12px 20px;
     font-size: 15px;
 }
+
+.hero-btn {
+    padding: 18px 40px;
+    font-size: 1.1rem;
+}

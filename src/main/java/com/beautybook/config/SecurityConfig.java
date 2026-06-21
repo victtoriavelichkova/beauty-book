@@ -44,11 +44,14 @@ public class SecurityConfig {
                                 "/services/list",
                                 "/appointments/**",
                                 "/dashboard",
-                                "/profile"
+                                "/profile",
+                                "/clients/create"
                         ).authenticated()
 
                         .requestMatchers(
-                                "/clients/**",
+                                "/clients",
+                                "/clients/edit/**",
+                                "/clients/delete/**",
                                 "/hairdressers/**",
                                 "/services",
                                 "/services/create",

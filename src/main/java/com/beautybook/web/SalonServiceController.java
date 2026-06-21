@@ -4,6 +4,7 @@ import com.beautybook.model.binding.SalonServiceBindingModel;
 import com.beautybook.model.entity.SalonService;
 import com.beautybook.service.interfaces.SalonServiceService;
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,8 +23,17 @@ public class SalonServiceController {
     }
 
     @GetMapping
-    public String all(Model model) {
+    public String all(Model model, Authentication authentication) {
+
         model.addAttribute("services", salonServiceService.getAll());
+
+        model.addAttribute(
+                "isAdmin",
+                authentication.getAuthorities()
+                        .stream()
+                        .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))
+        );
+
         return "services";
     }
 
@@ -114,11 +124,18 @@ public class SalonServiceController {
     }
 
     @GetMapping("/list")
-    public String servicesList(Model model) {
+    public String servicesList(Model model,
+                               Authentication authentication) {
 
         model.addAttribute("services", salonServiceService.getAll());
 
+        model.addAttribute(
+                "isAdmin",
+                authentication.getAuthorities()
+                        .stream()
+                        .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))
+        );
+
         return "services-list";
     }
-
 }

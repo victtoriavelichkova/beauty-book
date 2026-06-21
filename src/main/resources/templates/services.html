@@ -15,7 +15,10 @@
         <nav class="nav">
             <a href="/dashboard" class="btn btn-outline">Dashboard</a>
             <a href="/" class="btn btn-outline">Home</a>
-            <a href="/services/create" class="btn btn-purple">
+
+            <a th:if="${isAdmin}"
+               href="/services/create"
+               class="btn btn-purple">
                 Add Service
             </a>
         </nav>
@@ -32,7 +35,7 @@
                 <th>Service</th>
                 <th>Duration</th>
                 <th>Price</th>
-                <th>Action</th>
+                <th th:if="${isAdmin}">Action</th>
             </tr>
             </thead>
 
@@ -49,10 +52,10 @@
                 </td>
 
                 <td th:text="${service.price + ' EUR'}">
-                    50 €
+                    50 EUR
                 </td>
 
-                <td>
+                <td th:if="${isAdmin}">
 
                     <a class="action-link"
                        th:href="@{/services/edit/{id}(id=${service.id})}">

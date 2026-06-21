@@ -39,12 +39,11 @@ public class DashboardController {
 
         model.addAttribute("username", authentication.getName());
 
-        model.addAttribute(
-                "isAdmin",
-                authentication.getAuthorities()
-                        .stream()
-                        .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))
-        );
+        boolean isAdmin = authentication.getAuthorities()
+                .stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+
+        model.addAttribute("isAdmin", isAdmin);
 
         model.addAttribute("clientsCount", clientRepository.count());
         model.addAttribute("hairdressersCount", hairdresserRepository.count());

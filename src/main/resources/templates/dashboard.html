@@ -61,7 +61,7 @@
 
         <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:40px; justify-content:center;">
 
-            <div class="glass-card">
+            <div th:if="${isAdmin}" class="glass-card">
                 <h3>Clients</h3>
                 <h2 th:text="${clientsCount}">0</h2>
             </div>
@@ -76,7 +76,7 @@
                 <h2 th:text="${servicesCount}">0</h2>
             </div>
 
-            <div class="glass-card">
+            <div th:if="${isAdmin}" class="glass-card">
                 <h3>Appointments</h3>
                 <h2 th:text="${appointmentsCount}">0</h2>
             </div>
@@ -85,7 +85,13 @@
 
         <div style="margin-top:40px; display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
 
-            <a href="/appointments/create" class="btn btn-purple">
+            <!-- USER -->
+            <a th:if="${!isAdmin}" href="/clients/create" class="btn btn-purple">
+                Create & Book Appointment
+            </a>
+
+            <!-- ADMIN -->
+            <a th:if="${isAdmin}" href="/appointments/create" class="btn btn-purple">
                 Book Appointment
             </a>
 
