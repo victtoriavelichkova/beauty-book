@@ -418,3 +418,17 @@ th {
     transform: scale(1.03);
     border-color: #c77dff;
 }
+
+.nav .btn,
+.nav form button {
+    min-width: 140px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn, button {
+    padding: 12px 20px;
+    font-size: 15px;
+}
