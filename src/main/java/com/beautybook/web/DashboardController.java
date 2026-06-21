@@ -38,6 +38,14 @@ public class DashboardController {
             HttpServletResponse response) {
 
         model.addAttribute("username", authentication.getName());
+
+        model.addAttribute(
+                "isAdmin",
+                authentication.getAuthorities()
+                        .stream()
+                        .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))
+        );
+
         model.addAttribute("clientsCount", clientRepository.count());
         model.addAttribute("hairdressersCount", hairdresserRepository.count());
         model.addAttribute("servicesCount", salonServiceRepository.count());
