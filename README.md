@@ -6,6 +6,12 @@ BeautyBook is a web application for managing a hair salon. The system allows adm
 
 The project follows the MVC architecture and uses MySQL as a relational database.
 
+
+<p align="center">
+  <img src="collage.png" alt="BeautyBook Preview" width="100%">
+</p>
+
+# BeautyBook - Hair Salon Management System
 ---
 
 ## Tech Stack
@@ -159,6 +165,22 @@ Password:
 
 ```text
 admin
+```
+
+---
+
+## Default Client Account For Test
+
+Username:
+
+```text
+silvia.v
+```
+
+Password:
+
+```text
+147258
 ```
 
 ---

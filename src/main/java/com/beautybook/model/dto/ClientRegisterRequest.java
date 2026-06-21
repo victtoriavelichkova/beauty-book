@@ -41,7 +41,5 @@ public class ClientRegisterRequest {
     }
 
     public void register(ClientRegisterRequest request) {
-        // map DTO -> entity
-        // save client
     }
 }

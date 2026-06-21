@@ -433,7 +433,23 @@ th {
     font-size: 15px;
 }
 
-.hero-btn {
-    padding: 18px 40px;
-    font-size: 1.1rem;
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 35px;
+}
+
+.hero-buttons .btn {
+    min-width: 200px;
+    padding: 18px 32px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 300px;
+    padding: 0 40px;
 }
