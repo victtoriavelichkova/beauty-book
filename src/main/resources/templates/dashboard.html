@@ -9,103 +9,146 @@
 
 <div class="page">
 
-    <header class="header">
-        <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
+    <div th:if="${isAdmin}">
 
-        <nav class="nav">
+        <header class="header">
+            <a href="/" class="logo">✂ Beauty <span>Salon</span></a>
 
-            <a href="/services/list" class="btn btn-outline">
-                View Services
-            </a>
+            <nav class="nav">
+                <a href="/services/list" class="btn btn-outline">View Services</a>
+                <a href="/profile" class="btn btn-outline">Profile</a>
+                <a href="/appointments" class="btn btn-outline">Appointments</a>
+                <a href="/clients" class="btn btn-outline">Clients</a>
+                <a href="/hairdressers" class="btn btn-outline">Hairdressers</a>
+                <a href="/services/pricelist" class="btn btn-outline">Price List</a>
 
-            <a href="/profile" class="btn btn-outline">
-                Profile
-            </a>
+                <form th:action="@{/logout}" method="post" style="display:inline;">
+                    <button class="btn btn-purple" type="submit">Logout</button>
+                </form>
+            </nav>
+        </header>
 
-            <a th:if="${isAdmin}" href="/appointments" class="btn btn-outline">
-                Appointments
-            </a>
+        <main class="hero">
+            <div class="hero-small">WELCOME BACK</div>
 
-            <a th:if="${isAdmin}" href="/clients" class="btn btn-outline">
-                Clients
-            </a>
+            <h1>Hello, <span th:text="${username}">Admin</span></h1>
 
-            <a th:if="${isAdmin}" href="/hairdressers" class="btn btn-outline">
-                Hairdressers
-            </a>
+            <p>
+                Manage appointments, clients, hairdressers and salon services from one place.
+            </p>
 
-            <a href="/services/pricelist" class="btn btn-outline">
-                Price List
-            </a>
+            <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:40px; justify-content:center;">
 
-            <form th:action="@{/logout}" method="post" style="display:inline;">
-                <button class="btn btn-purple" type="submit">
-                    Logout
-                </button>
-            </form>
+                <div class="glass-card">
+                    <h3>Clients</h3>
+                    <h2 th:text="${clientsCount}">0</h2>
+                </div>
 
-        </nav>
-    </header>
+                <div class="glass-card">
+                    <h3>Hairdressers</h3>
+                    <h2 th:text="${hairdressersCount}">0</h2>
+                </div>
 
-    <main class="hero">
+                <div class="glass-card">
+                    <h3>Services</h3>
+                    <h2 th:text="${servicesCount}">0</h2>
+                </div>
 
-        <div class="hero-small">
-            WELCOME BACK
-        </div>
+                <div class="glass-card">
+                    <h3>Appointments</h3>
+                    <h2 th:text="${appointmentsCount}">0</h2>
+                </div>
 
-        <h1>Hello, <span th:text="${username}">User</span></h1>
-
-        <p>
-            Manage appointments and explore salon services from one place.
-        </p>
-
-        <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:40px; justify-content:center;">
-
-            <div th:if="${isAdmin}" class="glass-card">
-                <h3>Clients</h3>
-                <h2 th:text="${clientsCount}">0</h2>
             </div>
 
-            <div class="glass-card">
-                <h3>Hairdressers</h3>
-                <h2 th:text="${hairdressersCount}">0</h2>
+            <div style="margin-top:40px; display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
+
+                <a href="/appointments/create" class="btn btn-purple">
+                    Book Appointment
+                </a>
+
+                <a href="/clients/create" class="btn btn-outline">
+                    Add Client
+                </a>
+
+                <a href="/hairdressers/create" class="btn btn-outline">
+                    Add Hairdresser
+                </a>
+
+            </div>
+        </main>
+
+    </div>
+
+    <div th:if="${isUser}" class="user-dashboard">
+
+        <aside class="sidebar">
+
+            <a href="/" class="sidebar-logo">
+                ✂ Beauty <span>Salon</span>
+            </a>
+
+            <nav class="sidebar-nav">
+
+                <a href="/dashboard">🏠 Dashboard</a>
+
+                <a href="/clients/create">📅 Create & Book</a>
+
+                <a href="/services/list">💇 Services</a>
+
+                <a href="/services/pricelist">💰 Price List</a>
+
+                <a href="/gallery">📸 Gallery</a>
+
+                <a href="/profile">👤 Profile</a>
+
+                <a href="/hairdressers/create" class="btn btn-outline">
+                    Add Hairdresser
+                </a>
+
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit">
+                        🚪 Logout
+                    </button>
+                </form>
+
+            </nav>
+
+        </aside>
+
+        <main class="user-content">
+
+            <div class="hero-small">WELCOME BACK</div>
+
+            <h1>Hello, <span th:text="${username}">User</span></h1>
+
+            <p>
+                Browse our salon services, view prices and create your next appointment easily.
+            </p>
+
+            <div class="user-cards">
+
+                <div class="glass-card">
+                    <h3>Hairdressers</h3>
+                    <h2 th:text="${hairdressersCount}">0</h2>
+                </div>
+
+                <div class="glass-card">
+                    <h3>Services</h3>
+                    <h2 th:text="${servicesCount}">0</h2>
+                </div>
+
             </div>
 
-            <div class="glass-card">
-                <h3>Services</h3>
-                <h2 th:text="${servicesCount}">0</h2>
+            <div style="margin-top:40px;">
+                <a href="/clients/create" class="btn btn-purple">
+                    Create & Book Appointment
+                </a>
             </div>
 
-            <div th:if="${isAdmin}" class="glass-card">
-                <h3>Appointments</h3>
-                <h2 th:text="${appointmentsCount}">0</h2>
-            </div>
+        </main>
 
-        </div>
-
-        <div style="margin-top:40px; display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
-
-            <!-- USER -->
-            <a th:if="${!isAdmin}" href="/clients/create" class="btn btn-purple">
-                Create & Book Appointment
-            </a>
-
-            <!-- ADMIN -->
-            <a th:if="${isAdmin}" href="/appointments/create" class="btn btn-purple">
-                Book Appointment
-            </a>
-
-            <a th:if="${isAdmin}" href="/clients/create" class="btn btn-outline">
-                Add Client
-            </a>
-
-            <a th:if="${isAdmin}" href="/hairdressers/create" class="btn btn-outline">
-                Add Hairdresser
-            </a>
-
-        </div>
-
-    </main>
+    </div>
 
 </div>
 

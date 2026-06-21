@@ -44,6 +44,7 @@ public class DashboardController {
                 .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
 
         model.addAttribute("isAdmin", isAdmin);
+        model.addAttribute("isUser", !isAdmin);
 
         model.addAttribute("clientsCount", clientRepository.count());
         model.addAttribute("hairdressersCount", hairdresserRepository.count());
@@ -72,6 +73,13 @@ public class DashboardController {
             String lastVisit) {
 
         model.addAttribute("username", authentication.getName());
+
+        boolean isAdmin = authentication.getAuthorities()
+                .stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+
+        model.addAttribute("isAdmin", isAdmin);
+        model.addAttribute("isUser", !isAdmin);
 
         String formattedLastVisit = "No previous visit";
 

@@ -453,3 +453,72 @@ th {
     gap: 300px;
     padding: 0 40px;
 }
+
+.user-dashboard {
+    min-height: 100vh;
+    display: flex;
+}
+
+.sidebar {
+    width: 260px;
+    padding: 35px 25px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(14px);
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.sidebar-logo {
+    display: block;
+    margin-bottom: 45px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.sidebar-logo span {
+    color: #b85cff;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.sidebar-nav a,
+.sidebar-nav button {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 12px;
+    text-align: left;
+    text-decoration: none;
+    color: white;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(184, 92, 255, 0.25);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav button:hover {
+    background: rgba(184, 92, 255, 0.25);
+    transform: translateX(4px);
+}
+
+.sidebar-nav form {
+    width: 100%;
+}
+
+.user-content {
+    flex: 1;
+    padding: 110px 80px;
+}
+
+.user-cards {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
